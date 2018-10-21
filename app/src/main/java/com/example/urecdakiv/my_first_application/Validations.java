@@ -3,9 +3,7 @@ package com.example.urecdakiv.my_first_application;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Zava on 03.09.2018.
- */
+
 
 public class Validations {
 
