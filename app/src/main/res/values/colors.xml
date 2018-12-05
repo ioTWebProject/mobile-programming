@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#C75C5C</color>
-    <color name="colorPrimaryDark">#A75050</color>
-    <color name="colorPrimaryTransparent">#AAF5CF87</color>
-    <color name="colorAccent">#607D8B</color>
+    <!--<color name="colorPrimary">#1565C0</color>-->
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#2b2a2a</color>
+    <!--<color name="colorPrimaryDark">#0D47A1</color>-->
+    <color name="colorAccent">#ef5350</color>
+    <color name="color_favorite">#ef5350</color>
+    <color name="movie_placeholder">#363F44</color>
+    <color name="recycler_background">#2b2a2a</color>
+    <color name="transparent">#80000000</color>
+    <color name="transparent_white">#80FFFFFF</color>
+    <color name="white">#FFF</color>
+    <color name="gray_light">#f1f1f1</color>
+    <color name="gray_dark">#646464</color> <!-- detailActivity font color -->
+    <color name="gray">#555555</color>
+    <color name="blue_light">#a4bbca</color>
+    <color name="blue">#446e87</color>
 </resources>
+

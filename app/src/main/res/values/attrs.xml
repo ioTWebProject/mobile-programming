@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LatoTextView">
+        <attr name="fontType" format="string">
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="AutofitRecyclerView">
+        <attr name="columnWidth" format="dimension">
+        </attr>
+    </declare-styleable>
+
+</resources>

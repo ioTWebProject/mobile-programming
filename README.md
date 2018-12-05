@@ -1,59 +1,65 @@
-# <img src="app/src/main/ic_launcher-web.png" width="45" align="left"> Android Movies App
+## Popular Movies
+This a movies application for the Android Developer Nanodegree Course. This app also demonstrates the use of multiple libraries
+with a clean architecture for fetching the data from [The Movie Database](https://www.themoviedb.org) API.
 
-> Android app to list popular and top rated movies from [The Movie Database](https://www.themoviedb.org/).
+![1](/screenshots/Screenshot_1.png?raw=true)
 
-## Screenshots
+## Setting it up with your own API KEY
+In your root folder create a gradle.properties file and inside add the following line:
+```
+API_KEY = "{with you API key here}"
+```
+And you're good to go.
 
-### Mobile
+###Libraries
+- **[OkHttp](https://square.github.io/okhttp/)** As a Http client.
+- **[ButterKnife](https://github.com/JakeWharton/butterknife)** For view binding.
+- **[Stetho](https://facebook.github.io/stetho/)** For intercepting the data requested and view it with Chrome.
+- **[Support Palette](https://developer.android.com/reference/android/support/v7/graphics/Palette.html)** For retrieving the predominant colors in a picture.
+- **[Glide](https://github.com/bumptech/glide)** To perform image request and loading it to the views.
+- **[Gson](https://github.com/google/gson)** For parsing the network's JSON response.
 
-| <img width="250" height="444" src="./demo/mobile-1.png"> | <img width="250" height="444" src="./demo/mobile-2.png"> | <img width="250" height="444" src="./demo/mobile-3.png"> | <img width="250" height="444" src="./demo/mobile-4.png"> |
-| :---: | :---: | :---: | :---: |
-| Popular | Top Rated | Favorites | Movie Details |
+###Architecture
+This app uses the [Model View Presenter](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) architecture as explained in [this article](https://saulmm.github.io/2015/02/02/A%20useful%20stack%20on%20android%20%231,%20architecture/)
+written by [Saul Molinero](https://plus.google.com/+SaulMolineroMalvido) at his awesome blog. With a few modifications.
 
-### Tablet
+Instead of dividing the entire project into the three main layers of the architecture I opted to divide it
+in features:
 
-| <img width="350" height="263" src="./demo/tablet-1.png"> | <img width="350" height="263" src="./demo/tablet-2.png"> |
-| :---: | :---: |
-| Popular | Popular Details |
+![Feature](/screenshots/feature.png?raw=true)
 
-| <img width="350" height="263" src="./demo/tablet-3.png"> | <img width="350" height="263" src="./demo/tablet-4.png"> |
-| :---: | :---: |
-| Top Rated Details | Favorite Details |
+Rather of using [Otto](https://github.com/square/otto) for the layers communications right now is still using
+callbacks interfaces and instead of using multiples classes for extending the base view, presenter and use cases
+are done by creating a contract interface for the feature in which each one is extending the base interface.
+I consider is easier to read this way.
 
-## Getting Started
+```
+public interface MovieDetailsContract {
 
-Create your TMDB API Key here: https://www.themoviedb.org/documentation/api
+    interface Presenter extends com.nunez.popularmovies.mvp.presenters.Presenter {
+        void attachView(View detailsView);
+        void setTrailerLink();
+        void showViews();
+        void showPoster(String url);
+        void showTitle (String title);
+        void showDescription(String description);
+        void showTrailers();
+        void showReviews();
+    }
 
-Modify the file `res/values/keys.xml` with the value of your API Key.
+    interface View extends MVPView{
+        void setTrailerLink(String url);
+        void showPoster(String url);
+        void showTitle (String title);
+        void showDescription(String description);
+        void showTrailers(ArrayList<Video> trailers);
+        void showReviews(ArrayList<Review> reviews);
+    }
 
-## References
+     interface MovieDetailsController extends UseCase{
+         void requestMovieDetails();
+         void sendMovieDetailsToPresenter(Movie movie);
+    }
+}
 
-- [TMDB API Key](https://www.themoviedb.org/documentation/api)
-- [Why would I want to fitsSystemWindows?](https://medium.com/google-developers/why-would-i-want-to-fitssystemwindows-4e26d9ce1eec)
-- [ViewPager](http://www.thiengo.com.br/viewpager-no-android-entendendo-e-utilizando)
-- [Joda-Time](https://github.com/dlew/joda-time-android)
-- [Iconics](https://github.com/mikepenz/Android-Iconics)
-- [Icepick](https://github.com/frankiesardo/icepick)
-- [Butter Knife](https://github.com/JakeWharton/butterknife)
-- [EventBus](https://github.com/greenrobot/EventBus)
-- [ProviGen](https://github.com/TimotheeJeannin/ProviGen)
-- [DavidWebb](https://github.com/hgoebl/DavidWebb)
-- [Glide](https://github.com/bumptech/glide)
-- [RecyclerItemClickSupport](https://github.com/rohitshampur/RecyclerItemClickSupport)
-- [Robotium](https://github.com/RobotiumTech/robotium)
-
-**[Udacity Android Developer Nanodegree](https://udacity.com/course/android-developer-nanodegree--nd801/)**
-
-- [Developing Android Apps](https://br.udacity.com/course/developing-android-apps--ud853/)
-- [Advanced Android App Development](https://br.udacity.com/course/advanced-android-app-development--ud855/)
-- [Gradle for Android and Java](https://br.udacity.com/course/gradle-for-android-and-java--ud867/)
-- [Material Design for Android Developers](https://br.udacity.com/course/material-design-for-android-developers--ud862/)
-
-## Credits
-
-- [Iconfinder](https://www.iconfinder.com/icons/1055007/movie_play_video_icon#size=256)
-- [Google Font Marck Script](https://fonts.google.com/specimen/Marck+Script)
-
-## License
-
-[MIT License](http://brenopolanski.mit-license.org/) © Breno Polanski
+```

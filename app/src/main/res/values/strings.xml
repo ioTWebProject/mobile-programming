@@ -1,11 +1,25 @@
 <resources>
-    <string name="app_name">Movies</string>
-    <string name="popular">Popular</string>
-    <string name="top_rated">Top Rated</string>
-    <string name="favorites">Favorites</string>
-    <string name="conn_internet">Connect to internet</string>
-    <string name="share">Share</string>
-    <string name="reviews">Reviews</string>
-    <string name="review_by">Review by %1$s</string>
-    <string name="no_review_found">No review found</string>
+    <string name="app_name">Pal Cine</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_description">Description</string>
+    <string name="text_play_trailer">Play trailer</string>
+    <string name="text_trailers">Trailers</string>
+    <string name="text_reviews">Reviews</string>
+    <string name="text_show_favorites">Show favorites</string>
+    <string name="text_no_movies">No movies here, but our super smart monkeys are working on it  </string>
+    <string name="text_come_back_later">Come back later!</string>
+    <string name="format_reviews">\" %s \"</string>
+    <string name="format_rating">%s/10"</string>
+    <string name="format_reviewer">- %s -"</string>
+    <string name="text_share_trailer">Share Trailer</string>
+    <string name="text_refresh">Refresh</string>
+    <string name="error_connection">"Aww, no network connection found! :/ "</string>
+    <string name="error_no_trailer">"Aww, it seems there's no trailer for this movie :/ "</string>
+
+    <string-array name="movies_sort_array">
+        <item>Popular movies</item>
+        <item>Highest rated</item>
+        <item>Favorites</item>
+    </string-array>
+
 </resources>
